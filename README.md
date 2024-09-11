@@ -22,6 +22,7 @@
 - [X] 2024.5.2 由于依赖新增过多，代码新增Github Actions的使用，去除掉华为云函数部分的使用
 - [X] 2024.8.20 重构代码，使用SQLite数据库对用户JWSESSION以及打卡数据进行存储，使用腾讯地图API对用户打卡地址进行解析处理，新增消息模块里的蓝牙签到（By Mudea661），同步更新README文件。
 - [X] 2024.9.10 适配2024.9.9更新后的每日打卡，由于写完时打卡时间段已过，未进行测试
+- [ ] 2024.9.11 修复了一个Bug，现在打卡程序能够正常运行
 
 ### 使用说明：
 
@@ -88,7 +89,7 @@ Python3.7版本及以上
 
 `receive` 处填入接收邮箱地址，可以是打卡人的QQ邮箱，若不使用邮箱推送则填空
 
-`sct_ftqq` 部分填写[Server酱](https://sct.ftqq.com)的`<font color="red">`SendKey`</font>`值，若为空则代表不使用
+`sct_ftqq` 部分填写[Server酱](https://sct.ftqq.com)的 `<font color="red">`SendKey `</font>`值，若为空则代表不使用
 
 ![image-20240517233108811](https://gitee.com/lateyoung222/images/raw/master/image-20240517233108811.png)
 
@@ -114,11 +115,11 @@ Python3.7版本及以上
 
 1. 服务器端配置：
 
-    从本仓库下载所有代码
+   从本仓库下载所有代码
 
-    `git clone https://github.com/LinChiQ/NewWoZaiXiaoYuan`
+   `git clone https://github.com/LinChiQ/NewWoZaiXiaoYuan`
 
-    填写好cahche文件夹下的config.yaml文件以及相关配置，运行`python WoZaiXiaoYuan.py`
+   填写好cahche文件夹下的config.yaml文件以及相关配置，运行 `python WoZaiXiaoYuan.py`
 
 - 配置定时运行可在宝塔面板中直接使用计划任务配置为SHELL脚本命令: python/python3(Ubuntu系统) WoZaiXiaoYuan.py所在路径/WoZaiXiaoYuan.py
 - 或者使用Linux自带的crontab命令运行：https://www.runoob.com/linux/linux-comm-crontab.html
@@ -147,7 +148,7 @@ Python3.7版本及以上
   - `blue_sign` 是否进行蓝牙打卡，填写yes/no
   - `wzxy_username` 填写我在校园登录账号，通常为手机号
   - `wzxy_password` 填写我在校园登录密码
-  - `sct_ftqq` 填写[Server酱](https://sct.ftqq.com)的`<font color="red">`SendKey`</font>`值，若为空则代表不使用
+  - `sct_ftqq` 填写[Server酱](https://sct.ftqq.com)的 `<font color="red">`SendKey `</font>`值，若为空则代表不使用
   - `tencentKey` 填写上方获取并已分配额度的腾讯地图KEY值
 
   ![填写参考](https://gitee.com/lateyoung222/images/raw/master/image-20240502202556250.png)
@@ -160,13 +161,12 @@ Python3.7版本及以上
 
   ![image-20240502203613949](https://gitee.com/lateyoung222/images/raw/master/image-20240502203613949.png)
 
-    **多用户打卡**
-
+  **多用户打卡**
 - 回到仓库首页，依次点击 `.github/workflows/punch.yml`，将属于User02的部分取消注释后，在Environment中新增一个名为 `CONFIG_02`的环境后，填入同样的Secert即可
 - 如需要第三及以上个用户，请复制User01的所有代码，复制到yml文件后方，修改为User03，然后将 `environment: CONFIG_02`修改为 `environment: CONFIG_03`，再在Environment中新增一个叫 `CONFIG_03`的环境后填写同样的Secert即可，更多用户相同步骤，请注意新增时的**yml文件缩进**
 
-    **Archive Fork后的仓库**
+  **Archive Fork后的仓库**
 
-    Github Action如果在仓库长期不更新代码的情况下，会在一个月内自动停止对Action的调用，所以在Fork仓	库后还需要对仓库Archive，点击`Settings`，往下找到 `Danger Zone`，点击**Archive this repository**
+  Github Action如果在仓库长期不更新代码的情况下，会在一个月内自动停止对Action的调用，所以在Fork仓	库后还需要对仓库Archive，点击 `Settings`，往下找到 `Danger Zone`，点击**Archive this repository**
 
 ![image-20240820095313803](https://gitee.com/lateyoung222/images/raw/master/imgs/image-20240820095313803.png)

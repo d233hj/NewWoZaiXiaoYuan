@@ -208,8 +208,7 @@ def GetPunchData(headers, username, location, tencentKey, reList={}):
         pass
 
     PunchData = {}
-    """
-    locationType_url = (
+    """    locationType_url = (
         "https://gw.wozaixiaoyuan.com/sign/mobile/receive/doSignByLocation?id="
         + str(reList["id"])
         + "&schoolId="
@@ -235,6 +234,7 @@ def GetPunchData(headers, username, location, tencentKey, reList={}):
             },
         )
         reverseGeocode_data = json.loads(reverseGeocode.text)
+        geocode_data = reverseGeocode_data
         if reverseGeocode_data["status"] == 0:
             PunchData.update(
                 {
@@ -259,7 +259,7 @@ def GetPunchData(headers, username, location, tencentKey, reList={}):
 
 
 def GetUnDo(headers, username):
-    # url = "https://gw.wozaixiaoyuan.com/health/mobile/health/getBatch"
+    url = "https://gw.wozaixiaoyuan.com/health/mobile/health/getBatch"
     url = (
         "https://gw.wozaixiaoyuan.com/sign/mobile/receive/getMySignLogs?page=1&size=10"
     )
